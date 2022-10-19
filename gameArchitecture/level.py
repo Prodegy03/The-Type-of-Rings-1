@@ -5,10 +5,9 @@ from entities.enemy import enemy
 from entities.route import route
 from entities.tower import tower
 
-#extend my view_state instead.
+# extend my view_state instead.
 class level(arcade.View):
-    
-    def __init__(self,data : level_data, on_exit_callback : Callable[[list],None]):
+    def __init__(self, data: level_data, on_exit_callback: Callable[[list], None]):
         super().__init__()
         self.level_id = data.level_id
         self.route_data = data.route
@@ -16,13 +15,13 @@ class level(arcade.View):
         self.enemies_data = data.enemies
         self.word_data = data.word_data
 
-        #Populate this once you have something to save, such as a high score.
+        # Populate this once you have something to save, such as a high score.
         self.save_data = []
-        #Use this to tell the Game entity that you're done and ready to close.
+        # Use this to tell the Game entity that you're done and ready to close.
         self.on_exit_callback = on_exit_callback
 
-        self.can_run_gameplay : bool = False
-    
+        self.can_run_gameplay: bool = False
+
     def on_show_view(self):
         pass
 
@@ -37,19 +36,19 @@ class level(arcade.View):
         self.can_run_gameplay = True
 
     def on_update(self, delta_time: float):
-        if (self.can_run_gameplay):
+        if self.can_run_gameplay:
             self.towers.on_update(delta_time)
             self.enemies.on_update(delta_time)
-    
+
     def on_draw(self):
         arcade.start_render()
         if self.can_run_gameplay:
             self.towers.draw()
             self.enemies.draw()
-    
+
     def on_key_press(self, key: int, modifiers: int):
         if key == arcade.key.SPACE:
             self.exit_level()
-    
+
     def exit_level(self):
         self.on_exit_callback(self.save_data)
