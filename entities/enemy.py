@@ -2,6 +2,7 @@ from arcade import SpriteList
 from entities.entity import entity
 
 
+
 class enemy(entity):
 
     # TODO: make filepath be data-driven. Different tower types can have a different filepath. I guess this would be filepath_data? Or something like that.
@@ -27,3 +28,6 @@ class enemy(entity):
         for a in range(positions):
             enemies.append(enemy(position=(0, 0)))
         return enemies
+    def followRoute():
+
+        return
