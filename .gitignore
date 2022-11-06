@@ -136,3 +136,7 @@ node_modules/
 
 # vscode python env files
 .env
+
+# Virtual Environment directories
+.venv
+venv

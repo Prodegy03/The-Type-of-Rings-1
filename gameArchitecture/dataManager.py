@@ -11,7 +11,12 @@ class data_manager:
         return game_data(["0", "1", "2"])
 
     def load_level_data(self, level_id: str):
-        return data_manager.level_dummy_data()
+        dummy_data = data_manager.level_dummy_data()
+        dummy_data.level_id = level_id
+        return dummy_data
+    
+    def save_data(self, data: dict):
+        pass
 
     def level_dummy_data() -> level_data:
         level_id = "0"
